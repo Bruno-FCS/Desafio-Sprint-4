@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { LoginScreenRoutingModule } from './login-screen-routing.module';
 import { LoginScreenComponent } from './login-screen.component';
 import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     CommonModule,
-    LoginScreenRoutingModule
+    LoginScreenRoutingModule,
+    FormsModule
   ],
   exports: [
     LoginScreenComponent
