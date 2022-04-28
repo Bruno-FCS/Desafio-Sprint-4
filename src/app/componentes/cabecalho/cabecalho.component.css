@@ -1,0 +1,19 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.left-icon{
+  margin-top: 20px;
+  left: 40px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.right-icon{
+  margin-top: 20px;
+  right: 40px;
+  width: 30px;
+  cursor: pointer;
+}

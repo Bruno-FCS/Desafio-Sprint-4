@@ -10,6 +10,9 @@ import { CabecalhoComponent } from './cabecalho.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    CabecalhoComponent
   ]
 })
 export class CabecalhoModule { }
