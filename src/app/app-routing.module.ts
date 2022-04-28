@@ -10,6 +10,13 @@ const routes: Routes = [
         (m) => m.LoginScreenModule
       ),
   },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./home-screen/home-screen.module').then(
+        (m) => m.HomeScreenModule
+      ),
+  },
 ];
 
 @NgModule({
