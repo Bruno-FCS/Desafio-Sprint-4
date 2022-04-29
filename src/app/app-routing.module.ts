@@ -1,5 +1,7 @@
+import { LoginGuard } from './autenticacao/login.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AutenticacaoGuard } from './autenticacao/autenticacao.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -9,6 +11,7 @@ const routes: Routes = [
       import('./login-screen/login-screen.module').then(
         (m) => m.LoginScreenModule
       ),
+    canLoad: [LoginGuard],
   },
   {
     path: 'home',
@@ -16,6 +19,7 @@ const routes: Routes = [
       import('./home-screen/home-screen.module').then(
         (m) => m.HomeScreenModule
       ),
+    canLoad: [AutenticacaoGuard],
   },
 ];
 
