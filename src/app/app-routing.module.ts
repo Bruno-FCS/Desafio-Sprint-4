@@ -21,6 +21,14 @@ const routes: Routes = [
       ),
     canLoad: [AutenticacaoGuard],
   },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./dashboard-screen/dashboard-screen.module').then(
+        (m) => m.DashboardScreenModule
+      ),
+    canLoad: [AutenticacaoGuard],
+  },
 ];
 
 @NgModule({
