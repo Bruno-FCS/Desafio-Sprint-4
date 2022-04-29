@@ -1,0 +1,17 @@
+<div [ngClass]="{ 'active-menu': mostraMenu }">
+  <div class="menu-bar">
+    <i
+      class="fa fa-window-close menu-item"
+      (click)="abrirMenu()"
+      (keyup.space)="abrirMenu()"
+    ></i>
+    <ul class="list-unstyled">
+      <li class="list-group-item menu-item" (click)="paraHome()">Home</li>
+      <li class="list-group-item menu-item" (click)="paraDashboard()">
+        Dashborad
+      </li>
+    </ul>
+  </div>
+
+  <div class="overlay" (click)="abrirMenu()"></div>
+</div>

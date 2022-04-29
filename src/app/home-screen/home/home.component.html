@@ -1,4 +1,20 @@
-<app-cabecalho></app-cabecalho>
+<header>
+  <nav class="navbar">
+    <img
+      src="../../../assets/img/menu-icon.png"
+      class="left-icon position-relative"
+      (click)="menu.abrirMenu()"
+      (keyup.space)="menu.abrirMenu()"
+    />
+
+    <img
+      src="../../../assets/img/user-icon.png"
+      class="right-icon position-relative"
+      (click)="settings.abrirSettings()"
+      (keyup.space)="settings.abrirSettings()"
+    />
+  </nav>
+</header>
 
 <div class="d-flex flex-row full-height">
   <div class="d-flex col-md-12 align-items-center justify-content-center">
@@ -19,4 +35,7 @@
       </div>
     </div>
   </div>
+
+  <app-menu #menu></app-menu>
+  <app-settings #settings></app-settings>
 </div>

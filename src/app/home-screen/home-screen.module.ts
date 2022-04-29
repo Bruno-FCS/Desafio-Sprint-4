@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { HomeScreenRoutingModule } from './home-screen-routing.module';
 import { HomeComponent } from './home/home.component';
-import { CabecalhoModule } from '../componentes/cabecalho/cabecalho.module';
+import { MenuModule } from '../componentes/menu/menu.module';
+import { SettingsModule } from '../componentes/settings/settings.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { CabecalhoModule } from '../componentes/cabecalho/cabecalho.module';
   imports: [
     CommonModule,
     HomeScreenRoutingModule,
-    CabecalhoModule
+    MenuModule,
+    SettingsModule
   ]
 })
 export class HomeScreenModule { }
