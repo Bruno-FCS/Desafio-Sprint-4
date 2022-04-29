@@ -16,13 +16,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   logar() {
-    console.log(this.usuario);
-    console.log(this.senha);
     this.autenticacaoService.autenticar(this.usuario, this.senha).subscribe(()=>{
       this.router.navigate(['home'])
     }, (error)=>{
       alert("Usuário ou senha inválido")
-      this.router.navigate(['home'])
     })
   }
 }

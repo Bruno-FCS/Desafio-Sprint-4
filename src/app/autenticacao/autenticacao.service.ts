@@ -15,10 +15,10 @@ export class AutenticacaoService {
   autenticar(usuario: string, senha: string): Observable<HttpResponse<any>> {
     return this.httpClient
       .post(
-        'http://localhost:3000',
+        'http://localhost:3000/user/login',
         {
-          nome: usuario,
-          senha: senha,
+          userName: usuario,
+          password: senha,
         },
         { observe: 'response' }
       )

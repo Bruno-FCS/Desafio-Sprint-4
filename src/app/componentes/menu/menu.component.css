@@ -28,3 +28,11 @@
 .menu-item{
   cursor: pointer;
 }
+
+.img-settings{
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  width: 200px;
+}

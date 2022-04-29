@@ -5,9 +5,22 @@
       (click)="abrirMenu()"
       (keyup.space)="abrirMenu()"
     ></i>
-    <ul class="list-unstyled">
-      <li class="list-group-item menu-item" (click)="paraHome()">Home</li>
-      <li class="list-group-item menu-item" (click)="paraDashboard()">
+    <img
+      class="img-settings"
+      src="../../../assets/img/ford.png"
+      alt="Logo da Ford"
+    />
+    <ul class="list-unstyled list-group list-group-flush">
+      <li
+        class="list-group-item list-group-item-action menu-item"
+        (click)="paraHome()"
+      >
+        Home
+      </li>
+      <li
+        class="list-group-item list-group-item-action menu-item"
+        (click)="paraDashboard()"
+      >
         Dashborad
       </li>
     </ul>

@@ -10,8 +10,8 @@ import { BehaviorSubject } from 'rxjs';
 export class UsuarioService {
   private usuarioSubject = new BehaviorSubject<Usuario>({
     id: '',
-    nome: '',
-    senha: '',
+    name: '',
+    password: '',
     email: '',
   });
 
@@ -38,7 +38,12 @@ export class UsuarioService {
 
   logout() {
     this.tokenService.excluirToken();
-    this.usuarioSubject.next({ id: '', nome: '', senha: '', email: '' });
+    this.usuarioSubject.next({
+      id: '',
+      name: '',
+      password: '',
+      email: '',
+    });
   }
 
   estaLogado() {
