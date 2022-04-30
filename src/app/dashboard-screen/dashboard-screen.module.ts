@@ -5,17 +5,21 @@ import { DashboardScreenRoutingModule } from './dashboard-screen-routing.module'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MenuModule } from '../componentes/menu/menu.module';
 import { SettingsModule } from '../componentes/settings/settings.module';
+import { CartaoComponent } from './cartao/cartao.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    CartaoComponent
   ],
   imports: [
     CommonModule,
     DashboardScreenRoutingModule,
     MenuModule,
-    SettingsModule
+    SettingsModule,
+    FormsModule
   ]
 })
 export class DashboardScreenModule { }

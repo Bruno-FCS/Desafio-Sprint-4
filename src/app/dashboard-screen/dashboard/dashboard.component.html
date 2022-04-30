@@ -18,36 +18,28 @@
 
 <h1 class="text-center text-color">Dashboard FORD</h1>
 
-<div class="container d-flex align-items-center justify-content-center mt-4">
+<div class="container mt-4">
+  <div class="row">
+    <app-cartao class="col-3" [titulo]="'Veículo'">
+      <select class="form-control" type="number" [(ngModel)]="veiculoId" (ngModelChange)="enviaVeiculoId(veiculoId)">
+        <option *ngFor="let veiculo of veiculos" [ngValue]="veiculo.id">
+          <p>{{ veiculo.vehicle }}</p>
+        </option>
+      </select>
+    </app-cartao>
 
-  <div class="card m-4">
-    <div class="card-header">Veículo</div>
-    <div class="card-body">
-      <h5 class="card-title text-color">Seja bem vindo(a)!</h5>
-    </div>
+    <app-cartao class="col-3" [titulo]="'Total de Vendas'">
+      <h2>d</h2>
+    </app-cartao>
+
+    <app-cartao class="col-3" [titulo]="'Conectados'">
+      <h2>d</h2>
+    </app-cartao>
+
+    <app-cartao class="col-3" [titulo]="'Update Software'">
+      <h2>d</h2>
+    </app-cartao>
   </div>
-
-  <div class="card m-4">
-    <div class="card-header">Total de Vendas</div>
-    <div class="card-body">
-      <h5 class="card-title text-color">Seja bem vindo(a)!</h5>
-    </div>
-  </div>
-
-  <div class="card m-4">
-    <div class="card-header">Conectados</div>
-    <div class="card-body">
-      <h5 class="card-title text-color">Seja bem vindo(a)!</h5>
-    </div>
-  </div>
-
-  <div class="card m-4">
-    <div class="card-header">Update Software</div>
-    <div class="card-body">
-      <h5 class="card-title text-color">Seja bem vindo(a)!</h5>
-    </div>
-  </div>
-
 </div>
 
 <app-menu #menu></app-menu>
