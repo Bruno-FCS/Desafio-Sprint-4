@@ -1,5 +1,6 @@
+import { pluck, tap } from 'rxjs';
 import { environment } from './../../../environments/environment';
-import { VeiculosAPI } from './veiculo';
+import { Veiculo, VeiculosAPI } from './veiculo';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TokenService } from 'src/app/autenticacao/token.service';
@@ -18,16 +19,23 @@ export class VeiculoService {
   buscaVeiculos() {
     const token = this.tokenService.retornarToken();
     const headers = new HttpHeaders().append('x-access-token', token);
-    return this.httpClient.get<VeiculosAPI>(`${API}/vehicle`, {
-      headers,
-    });
+    return this.httpClient
+      .get<VeiculosAPI>(`${API}/vehicle`, {
+        headers,
+      })
+      .pipe(
+        tap((valor) => console.log(valor)),
+        pluck('vehicles')
+      );
   }
 
-  buscaVeiculoId(id: number) {
+  buscaVeiculoId(id: string) {
     const token = this.tokenService.retornarToken();
     const headers = new HttpHeaders().append('x-access-token', token);
-    return this.httpClient.get<VeiculosAPI>(`${API}/vehicle/${id}`, {
-      headers,
-    });
+    return this.httpClient
+      .get<Veiculo>(`${API}/vehicle/${id}`, {
+        headers,
+      })
+      .pipe(tap((valor) => console.log(valor)));
   }
 }

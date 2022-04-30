@@ -18,10 +18,15 @@
 
 <h1 class="text-center text-color">Dashboard FORD</h1>
 
-<div class="container mt-4">
+<div class="container mt-4" *ngIf="veiculos$ | async as veiculos">
   <div class="row">
     <app-cartao class="col-3" [titulo]="'Veículo'">
-      <select class="form-control" type="number" [(ngModel)]="veiculoId" (ngModelChange)="enviaVeiculoId(veiculoId)">
+      <select
+        class="form-control"
+        type="number"
+        [(ngModel)]="veiculoId"
+        (ngModelChange)="enviaVeiculoId(veiculoId)"
+      >
         <option *ngFor="let veiculo of veiculos" [ngValue]="veiculo.id">
           <p>{{ veiculo.vehicle }}</p>
         </option>
@@ -29,18 +34,28 @@
     </app-cartao>
 
     <app-cartao class="col-3" [titulo]="'Total de Vendas'">
-      <h2>d</h2>
+      <h2 *ngIf="veiculoEscolhido; else elseblock">
+        {{ veiculoEscolhido?.volumetotal }}
+      </h2>
+      <p>Unid.</p>
     </app-cartao>
 
     <app-cartao class="col-3" [titulo]="'Conectados'">
-      <h2>d</h2>
+      <h2 *ngIf="veiculoEscolhido; else elseblock">
+        {{ veiculoEscolhido?.connected }}
+      </h2>
+      <p>Unid.</p>
     </app-cartao>
 
     <app-cartao class="col-3" [titulo]="'Update Software'">
-      <h2>d</h2>
+      <h2 *ngIf="veiculoEscolhido; else elseblock">
+        {{ veiculoEscolhido?.softwareUpdates }}
+      </h2>
+      <p>Unid.</p>
     </app-cartao>
   </div>
 </div>
 
 <app-menu #menu></app-menu>
 <app-settings #settings></app-settings>
+<ng-template #elseblock><h2>--</h2></ng-template>
