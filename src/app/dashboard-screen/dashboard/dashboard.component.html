@@ -22,33 +22,33 @@
   <div class="row">
     <app-cartao class="col-3" [titulo]="'Veículo'">
       <select
-        class="form-control"
+        class="form-control mt-3"
         type="number"
         [(ngModel)]="veiculoId"
         (ngModelChange)="enviaVeiculoId(veiculoId)"
       >
         <option *ngFor="let veiculo of veiculos" [ngValue]="veiculo.id">
-          <p>{{ veiculo.vehicle }}</p>
+          {{ veiculo.vehicle }}
         </option>
       </select>
     </app-cartao>
 
     <app-cartao class="col-3" [titulo]="'Total de Vendas'">
-      <h2 *ngIf="veiculoEscolhido; else elseblock">
+      <h2 class="text-info" *ngIf="veiculoEscolhido; else blankSelection">
         {{ veiculoEscolhido?.volumetotal }}
       </h2>
       <p>Unid.</p>
     </app-cartao>
 
     <app-cartao class="col-3" [titulo]="'Conectados'">
-      <h2 *ngIf="veiculoEscolhido; else elseblock">
+      <h2 class="text-info" *ngIf="veiculoEscolhido; else blankSelection">
         {{ veiculoEscolhido?.connected }}
       </h2>
       <p>Unid.</p>
     </app-cartao>
 
     <app-cartao class="col-3" [titulo]="'Update Software'">
-      <h2 *ngIf="veiculoEscolhido; else elseblock">
+      <h2 class="text-info" *ngIf="veiculoEscolhido; else blankSelection">
         {{ veiculoEscolhido?.softwareUpdates }}
       </h2>
       <p>Unid.</p>
@@ -56,6 +56,18 @@
   </div>
 </div>
 
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <img
+      class="col-9"
+      *ngIf="veiculoEscolhido; else blankImage"
+      src="assets/img/{{ veiculoEscolhido?.vehicle }}.png"
+      alt="Imagem do veículo escolhido"
+    />
+  </div>
+</div>
+
 <app-menu #menu></app-menu>
 <app-settings #settings></app-settings>
-<ng-template #elseblock><h2>--</h2></ng-template>
+<ng-template #blankSelection><h2>-</h2></ng-template>
+<ng-template #blankImage></ng-template>
