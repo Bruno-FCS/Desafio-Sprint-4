@@ -7,12 +7,14 @@ import { MenuModule } from '../componentes/menu/menu.module';
 import { SettingsModule } from '../componentes/settings/settings.module';
 import { CartaoComponent } from './cartao/cartao.component';
 import { FormsModule } from '@angular/forms';
+import { TabelaComponent } from './tabela/tabela.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    CartaoComponent
+    CartaoComponent,
+    TabelaComponent
   ],
   imports: [
     CommonModule,

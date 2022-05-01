@@ -56,16 +56,18 @@
   </div>
 </div>
 
-<div class="container mt-4">
+<div class="container mt-3 mb-2">
   <div class="row justify-content-center">
     <img
-      class="col-9"
+      class="col-7"
       *ngIf="veiculoEscolhido; else blankImage"
       src="assets/img/{{ veiculoEscolhido?.vehicle }}.png"
       alt="Imagem do veículo escolhido"
     />
   </div>
 </div>
+
+<app-tabela></app-tabela>
 
 <app-menu #menu></app-menu>
 <app-settings #settings></app-settings>
