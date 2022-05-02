@@ -1,9 +1,8 @@
 import { pluck } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { Veiculo, VeiculosAPI } from './veiculo';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TokenService } from 'src/app/autenticacao/token.service';
 
 const API = environment.apiURL;
 
@@ -12,25 +11,16 @@ const API = environment.apiURL;
 })
 export class VeiculoService {
   constructor(
-    private httpClient: HttpClient,
-    private tokenService: TokenService
+    private httpClient: HttpClient
   ) {}
 
   buscaVeiculos() {
-    const token = this.tokenService.retornarToken();
-    const headers = new HttpHeaders().append('x-access-token', token);
     return this.httpClient
-      .get<VeiculosAPI>(`${API}/vehicle`, {
-        headers,
-      })
+      .get<VeiculosAPI>(`${API}/vehicle`)
       .pipe(pluck('vehicles'));
   }
 
   buscaVeiculoId(id: string) {
-    const token = this.tokenService.retornarToken();
-    const headers = new HttpHeaders().append('x-access-token', token);
-    return this.httpClient.get<Veiculo>(`${API}/vehicle/${id}`, {
-      headers,
-    });
+    return this.httpClient.get<Veiculo>(`${API}/vehicle/${id}`);
   }
 }

@@ -2,8 +2,7 @@ import { VeiculosDataAPI } from './veiculo-data';
 import { pluck } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { TokenService } from 'src/app/autenticacao/token.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 const API = environment.apiURL;
 
@@ -12,18 +11,14 @@ const API = environment.apiURL;
 })
 export class VeiculoDataService {
   constructor(
-    private httpClient: HttpClient,
-    private tokenService: TokenService
+    private httpClient: HttpClient
   ) {}
 
   buscaVeiculosData(valor?: string) {
-    const token = this.tokenService.retornarToken();
-    const headers = new HttpHeaders().append('x-access-token', token);
     const params = valor ? new HttpParams().append('valor', valor) : undefined;
     return this.httpClient
       .get<VeiculosDataAPI>(`${API}/vehicleData`, {
         params,
-        headers,
       })
       .pipe(pluck('vehicleData'));
   }
