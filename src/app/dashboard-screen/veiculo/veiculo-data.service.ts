@@ -1,5 +1,5 @@
 import { VeiculosDataAPI } from './veiculo-data';
-import { tap, pluck } from 'rxjs';
+import { pluck } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -25,9 +25,6 @@ export class VeiculoDataService {
         params,
         headers,
       })
-      .pipe(
-        tap((valor) => console.log(valor)),
-        pluck('vehicleData')
-      );
+      .pipe(pluck('vehicleData'));
   }
 }

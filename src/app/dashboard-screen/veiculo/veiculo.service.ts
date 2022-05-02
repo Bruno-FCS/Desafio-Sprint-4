@@ -1,4 +1,4 @@
-import { pluck, tap } from 'rxjs';
+import { pluck } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { Veiculo, VeiculosAPI } from './veiculo';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -23,19 +23,14 @@ export class VeiculoService {
       .get<VeiculosAPI>(`${API}/vehicle`, {
         headers,
       })
-      .pipe(
-        tap((valor) => console.log(valor)),
-        pluck('vehicles')
-      );
+      .pipe(pluck('vehicles'));
   }
 
   buscaVeiculoId(id: string) {
     const token = this.tokenService.retornarToken();
     const headers = new HttpHeaders().append('x-access-token', token);
-    return this.httpClient
-      .get<Veiculo>(`${API}/vehicle/${id}`, {
-        headers,
-      })
-      .pipe(tap((valor) => console.log(valor)));
+    return this.httpClient.get<Veiculo>(`${API}/vehicle/${id}`, {
+      headers,
+    });
   }
 }

@@ -3,54 +3,54 @@
     <thead>
       <tr class="bg-color">
         <th class="width">Código - Vin</th>
-        <th class="width">Odômetro</th>
-        <th class="width">Nível de Combustível</th>
-        <th class="width">Status</th>
-        <th class="width">Lat.</th>
-        <th class="width">Long.</th>
+        <div>
+          <th class="width">Odômetro</th>
+          <th class="width">Nível de Combustível</th>
+          <th class="width">Status</th>
+          <th class="width">Lat.</th>
+          <th class="width">Long.</th>
+        </div>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>
-          <input type="text" [formControl]="tabelaInput">
+          <input
+            type="text"
+            [formControl]="tabelaInput"
+            [(ngModel)]="inputValue"
+          />
         </td>
-        <td>
-          <div *ngIf="veiculosData$ | async as veiculosData; else elseblock">
-            <div *ngFor="let veiculoData of veiculosData">
-              <span class="font-weight">{{veiculoData.odometer}} Km</span>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div *ngIf="veiculosData$ | async as veiculosData; else elseblock">
-            <div *ngFor="let veiculoData of veiculosData">
-              <span class="font-weight">{{veiculoData.fuelLevel}}%</span>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div *ngIf="veiculosData$ | async as veiculosData; else elseblock">
-            <div *ngFor="let veiculoData of veiculosData">
-              <span class="font-weight">{{veiculoData.status}}</span>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div *ngIf="veiculosData$ | async as veiculosData; else elseblock">
-            <div *ngFor="let veiculoData of veiculosData">
-              <span class="font-weight">{{veiculoData.lat}}</span>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div *ngIf="veiculosData$ | async as veiculosData; else elseblock">
-            <div *ngFor="let veiculoData of veiculosData">
-              <span class="font-weight">{{veiculoData.long}}</span>
-            </div>
-          </div>
-        </td>
+        <div *ngIf="veiculosData$ | async as veiculosData; else elseblock">
+          <div *ngIf="inputValue.length == 20; else elseblock">
+            <td>
+              <div class="width-2" *ngFor="let veiculoData of veiculosData">
+                <span class="font-weight">{{ veiculoData.odometer }} Km</span>
+              </div>
+            </td>
 
+            <td>
+              <div class="width-2" *ngFor="let veiculoData of veiculosData">
+                <span class="font-weight">{{ veiculoData.fuelLevel }}%</span>
+              </div>
+            </td>
+            <td>
+              <div class="width-2" *ngFor="let veiculoData of veiculosData">
+                <span class="font-weight">{{ veiculoData.status }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="width-2" *ngFor="let veiculoData of veiculosData">
+                <span class="font-weight">{{ veiculoData.lat }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="width-2" *ngFor="let veiculoData of veiculosData">
+                <span class="font-weight">{{ veiculoData.long }}</span>
+              </div>
+            </td>
+          </div>
+        </div>
       </tr>
       <tr class="bg-color">
         <td colspan="6"></td>
@@ -59,6 +59,4 @@
   </table>
 </div>
 
-<ng-template #elseblock>
-    <span class="font-weight">-</span>
-</ng-template>
+<ng-template #elseblock></ng-template>

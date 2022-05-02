@@ -1,4 +1,4 @@
-import { distinctUntilChanged, filter, switchMap, tap } from 'rxjs';
+import { distinctUntilChanged, filter, switchMap } from 'rxjs';
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { VeiculoDataService } from '../veiculo/veiculo-data.service';
@@ -9,12 +9,10 @@ import { VeiculoDataService } from '../veiculo/veiculo-data.service';
   styleUrls: ['./tabela.component.css'],
 })
 export class TabelaComponent {
+  inputValue!: string;
   tabelaInput = new FormControl();
   veiculosData$ = this.tabelaInput.valueChanges.pipe(
-    tap(console.log),
-    filter(
-      (valorDigitado) => valorDigitado.length >= 20 && valorDigitado.length < 21
-    ),
+    filter((valorDigitado) => valorDigitado.length == 20),
     distinctUntilChanged(),
     switchMap((valorDigitado) =>
       this.veiculoDataService.buscaVeiculosData(valorDigitado)
