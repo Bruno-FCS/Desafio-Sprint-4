@@ -2,22 +2,55 @@
   <table class="table">
     <thead>
       <tr class="bg-color">
-        <th scope="col">Código - Vin</th>
-        <th scope="col">Odômetro</th>
-        <th scope="col">Nível de Combustível</th>
-        <th scope="col">Status</th>
-        <th scope="col">Lat.</th>
-        <th scope="col">Long.</th>
+        <th class="width">Código - Vin</th>
+        <th class="width">Odômetro</th>
+        <th class="width">Nível de Combustível</th>
+        <th class="width">Status</th>
+        <th class="width">Lat.</th>
+        <th class="width">Long.</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
+        <td>
+          <input type="text" [formControl]="tabelaInput">
+        </td>
+        <td>
+          <div *ngIf="veiculosData$ | async as veiculosData; else elseblock">
+            <div *ngFor="let veiculoData of veiculosData">
+              <span class="font-weight">{{veiculoData.odometer}} Km</span>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="veiculosData$ | async as veiculosData; else elseblock">
+            <div *ngFor="let veiculoData of veiculosData">
+              <span class="font-weight">{{veiculoData.fuelLevel}}%</span>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="veiculosData$ | async as veiculosData; else elseblock">
+            <div *ngFor="let veiculoData of veiculosData">
+              <span class="font-weight">{{veiculoData.status}}</span>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="veiculosData$ | async as veiculosData; else elseblock">
+            <div *ngFor="let veiculoData of veiculosData">
+              <span class="font-weight">{{veiculoData.lat}}</span>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="veiculosData$ | async as veiculosData; else elseblock">
+            <div *ngFor="let veiculoData of veiculosData">
+              <span class="font-weight">{{veiculoData.long}}</span>
+            </div>
+          </div>
+        </td>
+
       </tr>
       <tr class="bg-color">
         <td colspan="6"></td>
@@ -25,3 +58,7 @@
     </tbody>
   </table>
 </div>
+
+<ng-template #elseblock>
+    <span class="font-weight">-</span>
+</ng-template>
